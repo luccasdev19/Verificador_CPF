@@ -1,20 +1,11 @@
 import re
 import sys
+import random
 
-entrada = input ('Digite o CPF : ')
-cpf_enviado = re.sub(r'[^0-9]', '', entrada )
+nove_digitos = ''
+for i in range(9) : 
+    nove_digitos += str(random.randint(0, 9))
 
-if len(cpf_enviado) !=  11 :
-    print('O CPF deve constar 11 digitos!')
-    sys.exit() 
-
-entrada_e_sequencial = cpf_enviado == cpf_enviado[0] * len (cpf_enviado)
-
-if entrada_e_sequencial : 
-    print ('Você digitou dados Sequenciais.')
-    sys.exit()
-
-nove_digitos = cpf_enviado[:9]  
 contador_regressivo = 10 
 
 resultado  = 0 
@@ -40,8 +31,5 @@ digito_2 = digito_2 if digito_2 <= 9 else 0
 
 cpf_gerado_calculo = f'{nove_digitos}{digito_1}{digito_2}'
 
-if cpf_gerado_calculo == cpf_enviado : 
-    print (f'{cpf_gerado_calculo} é um CPF valido! ')
-else : 
-    print('Cpf invalido, tente novamente. ')
 
+print (cpf_gerado_calculo)
